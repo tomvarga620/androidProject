@@ -4,16 +4,20 @@
     >
 
     <item
+        android:color="@color/colorPrimaryDark"
         android:id="@+id/action_weather"
         android:enabled="true"
-        android:title="Weather"
+        android:title="@string/weather"
+        android:icon="@drawable/ic_ac_unit_black_24dp"
         app:showAsAction="ifRoom"
     />
 
     <item
+        android:color="@color/colorPrimaryDark"
         android:id="@+id/action_settings"
         android:enabled="true"
-        android:title="Settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_ac_unit_black_24dp"
         app:showAsAction="ifRoom"
      />
 </menu>

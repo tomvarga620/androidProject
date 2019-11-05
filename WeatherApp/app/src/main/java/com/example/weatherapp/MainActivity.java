@@ -24,12 +24,16 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.action_weather:
-                        Toast.makeText(MainActivity.this,"Weather Clicked",Toast.LENGTH_SHORT).show();
-                    break;
+                        //Toast.makeText(MainActivity.this,"Weather Clicked",Toast.LENGTH_SHORT).show();
+                        Intent intentMain = new Intent(MainActivity.this,MainActivity.class);
+                        startActivity(intentMain);
+                        break;
 
                     case R.id.action_settings:
-                        Toast.makeText(MainActivity.this," Settings Clicked",Toast.LENGTH_SHORT).show();
-                    break;
+                        //Toast.makeText(MainActivity.this," Settings Clicked",Toast.LENGTH_SHORT).show();
+                        Intent intentSettings = new Intent(MainActivity.this,SettingsActivity.class);
+                        startActivity(intentSettings);
+                        break;
                 }
                 return true;
             }

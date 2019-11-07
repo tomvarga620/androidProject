@@ -4,7 +4,6 @@
     >
 
     <item
-        android:color="@color/colorPrimaryDark"
         android:id="@+id/action_weather"
         android:enabled="true"
         android:title="@string/weather"
@@ -13,7 +12,6 @@
     />
 
     <item
-        android:color="@color/colorPrimaryDark"
         android:id="@+id/action_settings"
         android:enabled="true"
         android:title="@string/settings"

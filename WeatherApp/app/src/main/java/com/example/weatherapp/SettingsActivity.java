@@ -16,22 +16,36 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
-
-public class SettingsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
-
-    Switch switchDarkMode = null;
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.darktheme);
+        }else {
+            setTheme(R.style.AppTheme);
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        switchDarkMode = findViewById(R.id.switchDarkMode);
-        switchDarkMode.setOnCheckedChangeListener(this);
+        Switch switchDarkMode = findViewById(R.id.switchDarkMode);
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            switchDarkMode.setChecked(true);
+        }
+        switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    restart();
+                }else{
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    restart();
+                }
+            }
+        });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -55,21 +69,12 @@ public class SettingsActivity extends AppCompatActivity implements CompoundButto
         });
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if(isChecked){
-            SharedPreferences sharedPref = getSharedPreferences("Preference", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean("switchDarkMode",true);
-            editor.apply();
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            SharedPreferences sharedPref = getSharedPreferences("Preference", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean("switchDarkMode",false);
-            editor.apply();
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
+    private void restart() {
+        Intent i = new Intent(getApplicationContext(),SettingsActivity.class);
+        startActivity(i);
+        finish();
+
     }
+
 
 }

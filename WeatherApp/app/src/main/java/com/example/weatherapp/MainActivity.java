@@ -21,8 +21,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.darktheme);
+        }else {
+            setTheme(R.style.AppTheme);
+        }
+
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(getDefaultNightMode());
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);

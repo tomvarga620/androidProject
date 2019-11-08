@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?attr/buttoncolor"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@drawable/nav_item_color_state"
+        android:background="?attr/barcolor"
+        app:itemIconTint="?attr/iconcolor"
+        app:itemTextColor="?attr/iconcolor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_main"
         />

@@ -32,8 +32,6 @@ import static androidx.appcompat.app.AppCompatDelegate.getDefaultNightMode;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewResult;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,10 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        textViewResult = findViewById(R.id.text_view_result);
-
-        RequestQueue queue = Volley.newRequestQueue(this);
         jsonParse();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -79,7 +73,24 @@ public class MainActivity extends AppCompatActivity {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, apiurl, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("Result request", response.toString());
+                String nameCity="";
+                String weatherDescription="";
+                String country ="";
+                int temp=0;
+                try {
+                    nameCity = response.getString("name");
+                    JSONArray weather = response.getJSONArray("weather");
+                    JSONObject main = response.getJSONObject("main");
+                    JSONObject sys = response.getJSONObject("sys");
+                    weatherDescription = weather.getJSONObject(0).getString("main");
+                    temp = main.getInt("temp");
+                    country = sys.getString("country");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                setWeather(nameCity,country,temp,weatherDescription);
+                //Log.i("Result request", response.toString());
             }
         }, new Response.ErrorListener() {
             @Override
@@ -88,5 +99,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Volley.newRequestQueue(getBaseContext()).add(request);
+    }
+
+    public void setWeather(String city,String country,int temp,String mainDescription){
+        float tempCelsius = temp-273.15F;
+        String formattedTemp = String.format("%.02f",tempCelsius);
+        formattedTemp = formattedTemp+"°";
+        TextView textLocation = findViewById(R.id.text_view_location);
+        TextView textTemp = findViewById(R.id.text_view_temp);
+        TextView textStatus = findViewById(R.id.text_view_status);
+
+        textLocation.setText(city);
+        textTemp.setText(String.valueOf(formattedTemp));
+        textStatus.setText(mainDescription);
     }
 }

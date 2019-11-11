@@ -6,7 +6,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="backgroundColor">#fcfcfc</item>
         <item name="textcolor">#06004F</item>
-        <item name="iconcolor">#E6008A</item>
+        <item name="iconcolor">#ffffff</item>
         <item name="barcolor">#0F00B8</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
@@ -18,7 +18,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="backgroundColor">#06004F</item>
         <item name="textcolor">#ffffff</item>
-        <item name="iconcolor">#ffffff</item>
+        <item name="iconcolor">#E6008A</item>
         <item name="barcolor">#0A0081</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>

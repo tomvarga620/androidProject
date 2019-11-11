@@ -6,18 +6,14 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -26,17 +22,12 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static androidx.appcompat.app.AppCompatDelegate.getDefaultNightMode;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+//tu je request
     public void jsonReq(double coordinate1,double coordinate2) {
         String latitude = Double.toString(coordinate1);
         String longitute = Double.toString(coordinate2);
@@ -128,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         formattedTemp = formattedTemp+"°C";
         TextView textLocation = findViewById(R.id.text_view_location);
         TextView textTemp = findViewById(R.id.text_view_temp);
-        TextView textStatus = findViewById(R.id.text_view_status);
+        TextView textStatus = findViewById(R.id.text_view_darkmode);
 
         textLocation.setText(city);
         textTemp.setText(String.valueOf(formattedTemp));
@@ -145,8 +136,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Location location) {
                 if(location != null){
-                    TextView coordinates = findViewById(R.id.text_view_coordinates);
-                    coordinates.setText(location.toString());
                     double latitude = location.getLatitude();
                     double longitude = location.getLongitude();
                     coord = new Coordinates(latitude,longitude);

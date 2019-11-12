@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -7,10 +8,12 @@ import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        setWeatherIcon(weatherDescription);
         setWeather(nameCity,country,temp,weatherDescription);
     }
 
@@ -119,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         formattedTemp = formattedTemp+"°C";
         TextView textLocation = findViewById(R.id.text_view_location);
         TextView textTemp = findViewById(R.id.text_view_temp);
-        TextView textStatus = findViewById(R.id.text_view_darkmode);
+        TextView textStatus = findViewById(R.id.text_view_status);
 
         textLocation.setText(city);
         textTemp.setText(String.valueOf(formattedTemp));
@@ -147,5 +151,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestPermission(){
         ActivityCompat.requestPermissions(this,new String[]{ACCESS_FINE_LOCATION},1);
+    }
+
+    private void setWeatherIcon(String weather){
+        ImageView icon = findViewById(R.id.weatherIcon);
+
+        switch(weather){
+            case "Clouds":
+                icon.setBackgroundResource(R.drawable.ic_clouds);
+                break;
+            case "Clear":
+                icon.setBackgroundResource(R.drawable.ic_clear);
+                break;
+            case "Snow":
+                icon.setBackgroundResource(R.drawable.ic_snow);
+                break;
+            case "Rain":
+                icon.setBackgroundResource(R.drawable.ic_rain);
+                break;
+            case "Mist":
+                icon.setBackgroundResource(R.drawable.ic_mist);
+                break;
+        }
+
     }
 }

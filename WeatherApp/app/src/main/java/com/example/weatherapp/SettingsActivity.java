@@ -58,6 +58,12 @@ public class SettingsActivity extends AppCompatActivity {
                         startActivity(intentMain);
                         break;
 
+                    case R.id.action_add:
+                        //Toast.makeText(MainActivity.this," Settings Clicked",Toast.).show();
+                        Intent intentAdd = new Intent(SettingsActivity.this, AddActivity.class);
+                        startActivity(intentAdd);
+                        break;
+
                     case R.id.action_settings:
                         //Toast.makeText(MainActivity.this," Settings Clicked",Toast.LENGTH_SHORT).show();
                         Intent intentSettings = new Intent(SettingsActivity.this,SettingsActivity.class);

@@ -19,6 +19,7 @@
         app:menu="@menu/bottom_nav_main" />
 
     <ListView
+        android:id="@+id/itemsList"
         android:layout_width="match_parent"
         android:layout_height="494dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -54,6 +54,7 @@ public class AddActivity extends AppCompatActivity {
                 if(!itemName.equals("") && db.insertData(itemName)){
                     Toast.makeText(AddActivity.this,"Data added",Toast.LENGTH_SHORT);
                     add_item.setText("");
+                    viewData();
                 } else {
                     Toast.makeText(AddActivity.this,"Data not added",Toast.LENGTH_SHORT);
                 }
@@ -100,6 +101,7 @@ public class AddActivity extends AppCompatActivity {
 
             adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listItem);
             list.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
         }
     }
 }

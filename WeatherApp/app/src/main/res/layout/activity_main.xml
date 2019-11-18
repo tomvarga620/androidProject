@@ -16,8 +16,7 @@
         app:itemIconTint="?attr/iconcolor"
         app:itemTextColor="?attr/iconcolor"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_main"
-        />
+        app:menu="@menu/bottom_nav_main" />
 
     <ImageView
         android:id="@+id/weatherIcon"

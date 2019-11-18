@@ -34,7 +34,7 @@ import org.json.JSONObject;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DarkModeSet{
 
     private FusedLocationProviderClient client;
     Coordinates coord;
@@ -42,11 +42,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
-            setTheme(R.style.darktheme);
-        } else {
-            setTheme(R.style.AppTheme);
-        }
+        setDarkmode();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -182,5 +178,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    @Override
+    public void setDarkmode() {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.darktheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.example.weatherapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity implements DarkModeSet{
 
     DatabaseHelper db;
     Button btn_add_data;
@@ -33,6 +34,9 @@ public class AddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setDarkmode();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
@@ -99,9 +103,18 @@ public class AddActivity extends AppCompatActivity {
                 listItem.add(cursor.getString(1));
             }
 
-            adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listItem);
+            adapter = new ArrayAdapter<>(this,R.layout.list_item,listItem);
             list.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void setDarkmode() {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.darktheme);
+        } else {
+            setTheme(R.style.AppTheme);
         }
     }
 }

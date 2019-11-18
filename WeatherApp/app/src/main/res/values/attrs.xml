@@ -6,5 +6,7 @@
         <attr name="iconcolor" format="color"/>
         <attr name="barcolor" format="color"/>
         <attr name="condition" format="color"/>
+        <attr name="buttoncolor" format="color"/>
+        <attr name="buttontext" format="color"/>
     </declare-styleable>
 </resources>

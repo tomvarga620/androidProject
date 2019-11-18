@@ -16,16 +16,12 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements DarkModeSet {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
-            setTheme(R.style.darktheme);
-        }else {
-            setTheme(R.style.AppTheme);
-        }
+        setDarkmode();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -83,4 +79,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void setDarkmode() {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+            setTheme(R.style.darktheme);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+    }
 }

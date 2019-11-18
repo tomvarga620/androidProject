@@ -9,6 +9,8 @@
         <item name="iconcolor">#ffffff</item>
         <item name="barcolor">#0F00B8</item>
         <item name="condition">#C7C2FF</item>
+        <item name="buttoncolor">#0F00B8</item>
+        <item name="buttontext">#ffffff</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
@@ -22,6 +24,8 @@
         <item name="iconcolor">#E6008A</item>
         <item name="barcolor">#0A0081</item>
         <item name="condition">#C7C2FF</item>
+        <item name="buttoncolor">#E6008A</item>
+        <item name="buttontext">#ffffff</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
